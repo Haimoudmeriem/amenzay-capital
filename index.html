@@ -8,7 +8,7 @@
 <meta property="og:title" content="Amenzay Capitale | Matériel &amp; fournitures informatiques">
 <meta property="og:description" content="L'excellence technologique pour vos collaborateurs. Devis comparatif gratuit sous 24h.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="flyer.jpg">
+<meta property="og:image" content="assets/flyer.jpg">
 <meta name="theme-color" content="#0b0b0c">
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -210,7 +210,11 @@
       </ul>
     </div>
 
-    <form id="devis-form" class="form" novalidate>
+    <form id="devis-form" class="form" action="https://formsubmit.co/amenzaycapitale@gmail.com" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="Demande de devis - Site Amenzay Capitale">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="">
       <div class="field">
         <label for="nom">Nom et prénom</label>
         <input id="nom" name="nom" type="text" autocomplete="name" required>
@@ -245,6 +249,7 @@
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="btn" type="submit">Envoyer ma demande</button>
       <p class="form-note" id="form-note" role="status">Nous vous répondons avec un devis comparatif sous 24h.</p>
+      <p class="form-note">Vous préférez nous écrire directement ? <a href="mailto:amenzaycapitale@gmail.com">amenzaycapitale@gmail.com</a></p>
     </form>
   </div>
 </section>
