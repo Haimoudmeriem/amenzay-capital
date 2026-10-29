@@ -1,0 +1,52 @@
+SITE AMENZAY CAPITALE
+=====================
+
+Contenu du dossier
+- index.html   : la page du site (tous les textes sont ici, en français)
+- style.css    : couleurs et mise en page (noir et or)
+- script.js    : menu mobile et formulaire de devis
+- assets/      : logo et photos (logo.png, produits.jpg, flyer.jpg)
+
+Voir le site
+Double-cliquez sur index.html : il s'ouvre dans votre navigateur.
+
+Mettre le site en ligne
+Envoyez tout le contenu du dossier chez votre hébergeur (cPanel, FTP, etc.),
+ou glissez-déposez le dossier sur Netlify Drop (app.netlify.com/drop),
+Vercel ou GitHub Pages. Aucun serveur ni base de données n'est nécessaire.
+
+Modifier les textes
+Ouvrez index.html avec un éditeur de texte (Bloc-notes, VS Code) et changez
+le texte entre les balises.
+
+Formulaire de devis (réception dans votre e-mail)
+Le formulaire envoie les demandes à amenzaycapitale@gmail.com grâce au service
+gratuit FormSubmit (formsubmit.co), sans compte à créer.
+
+ACTIVATION (à faire UNE SEULE FOIS, une fois le site en ligne) :
+1. Mettez le site en ligne (le formulaire ne fonctionne pas en ouvrant
+   index.html directement depuis votre ordinateur).
+2. Remplissez et envoyez une demande de test depuis le site.
+3. Ouvrez la boîte amenzaycapitale@gmail.com : vous recevez un e-mail de
+   FormSubmit "Activate Form". Cliquez sur le bouton de confirmation
+   (regardez aussi dans les Spams).
+4. Envoyez un second test : la demande arrive maintenant dans votre boîte.
+
+Tant que l'activation n'est pas faite, les visiteurs voient un message et leur
+messagerie s'ouvre avec un e-mail prérempli (plan B), donc aucune demande n'est
+perdue.
+
+Vous recevez un e-mail avec un tableau : nom, société, e-mail, téléphone,
+besoin et message. Le bouton "Répondre" écrit directement au client.
+
+Ajouter vos références clients (portfolio)
+Dans index.html, cherchez le commentaire "RÉFÉRENCES CLIENTS" dans la section
+Portfolio : un modèle de bloc à dupliquer y est indiqué.
+
+Changer les couleurs
+Dans style.css, les variables au début du fichier (--gold, --bg...) pilotent
+toute la charte.
+
+Domaine et adresse e-mail
+Pour un look plus professionnel, pensez à un nom de domaine (ex. amenzaycapitale.ma)
+et une adresse e-mail à ce nom.
