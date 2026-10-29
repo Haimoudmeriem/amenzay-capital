@@ -23,39 +23,64 @@
     });
   }
 
-  // Formulaire de devis : envoi classique vers FormSubmit (réception par e-mail)
+  // Formulaire de devis : envoi AJAX vers Formspree
   var form = document.getElementById('devis-form');
   var note = document.getElementById('form-note');
 
   if (form) {
-    // Message de remerciement au retour de FormSubmit
-    if (/[?&]merci=1/.test(window.location.search)) {
-      note.textContent = 'Merci ! Votre demande a bien été envoyée. Nous vous répondons sous 24h.';
-      note.style.color = '#d4af62';
-      note.style.fontWeight = '600';
-    }
-
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
       var ok = true;
       [form.nom, form.email].forEach(function (champ) {
         var vide = !champ.value.trim();
         champ.classList.toggle('invalid', vide);
         if (vide) ok = false;
       });
+
       if (!ok) {
-        e.preventDefault();
         note.textContent = 'Merci de renseigner votre nom et votre e-mail.';
+        note.style.color = '#ef4444';
         return;
       }
-
-      var societe = form.societe.value.trim();
-      form._subject.value = 'Demande de devis - ' + (societe || form.nom.value.trim());
-      form._next.value = window.location.origin + window.location.pathname + '?merci=1#contact';
 
       var bouton = form.querySelector('button[type="submit"]');
       bouton.disabled = true;
       bouton.textContent = 'Envoi en cours…';
-      // Le navigateur poursuit l'envoi normalement vers FormSubmit
+      note.textContent = 'Transmission de votre demande en cours…';
+      note.style.color = '#94a3b8';
+
+      var data = new FormData(form);
+
+      try {
+        var response = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          note.textContent = 'Merci ! Votre demande a bien été envoyée. Nous vous répondons sous 24h.';
+          note.style.color = '#d4af62';
+          note.style.fontWeight = '600';
+          form.reset();
+        } else {
+          var resData = await response.json();
+          if (resData.errors) {
+            note.textContent = resData.errors.map(function(error) { return error.message; }).join(', ');
+          } else {
+            note.textContent = 'Une erreur est survenue lors de l\'envoi. Vous pouvez nous écrire directement à amenzaycapitale@gmail.com';
+          }
+          note.style.color = '#ef4444';
+        }
+      } catch (error) {
+        note.textContent = 'Erreur réseau. Vous pouvez nous contacter directement par e-mail ou téléphone.';
+        note.style.color = '#ef4444';
+      } finally {
+        bouton.disabled = false;
+        bouton.textContent = 'Envoyer ma demande';
+      }
     });
 
     form.querySelectorAll('input').forEach(function (champ) {
